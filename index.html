@@ -1,48 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Invitation Anniversaire</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitation Anniversaire 🎉</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: linear-gradient(135deg, #ff6a00, #ee0979);
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+        color: white;
+        text-align: center;
+    }
 
-        .box {
-            max-width: 700px;
-            margin: auto;
-            background: rgba(255,255,255,0.15);
-            padding: 20px;
-            border-radius: 20px;
-        }
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 25px;
+    }
 
-        video {
-            width: 100%;
-            border-radius: 15px;
-            margin-top: 15px;
-        }
-    </style>
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 15px;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 12px 22px;
+        border: none;
+        border-radius: 30px;
+        background: white;
+        color: #ee0979;
+        font-weight: bold;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    button:active {
+        transform: scale(0.97);
+    }
+
+    .text {
+        margin-top: 15px;
+        font-size: 1.1rem;
+    }
+</style>
 </head>
 
 <body>
 
-    <div class="box">
-        <h1>🎉 Invitation Anniversaire 🎉</h1>
+<div class="container">
 
-        <!-- VIDÉO -->
-        <video controls autoplay muted loop>
+    <h1>🎉 Invitation Anniversaire 🎉</h1>
+
+    <div class="card">
+
+        <!-- VIDEO COMPATIBLE IPHONE -->
+        <video id="video" playsinline controls muted loop>
             <source src="video.mp4" type="video/mp4">
             Ton navigateur ne supporte pas la vidéo.
         </video>
 
-        <p>Tu es invité(e) à mon anniversaire 🥳</p>
+        <div class="text">
+            Clique sur le bouton pour activer le son 🔊
+        </div>
+
+        <button onclick="enableSound()">
+            🔊 Activer le son
+        </button>
+
+        <p class="text">
+            Tu es invité(e) à mon anniversaire 🥳
+        </p>
+
     </div>
+
+</div>
+
+<script>
+function enableSound() {
+    const video = document.getElementById("video");
+
+    video.muted = false;
+    video.volume = 1.0;
+
+    // relance propre (important iPhone)
+    video.play().catch(() => {
+        alert("Appuie sur ▶️ dans la vidéo si besoin");
+    });
+}
+</script>
 
 </body>
 </html>
