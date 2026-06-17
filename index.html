@@ -2,94 +2,46 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitation Anniversaire</title>
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            text-align: center;
-            color: #333;
-        }
-
-        .container {
-            padding: 40px;
-        }
-
-        h1 {
-            font-size: 3rem;
+            font-family: Arial;
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
             color: white;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
 
-        .card {
-            background: white;
-            max-width: 600px;
+        .box {
+            max-width: 700px;
             margin: auto;
-            padding: 30px;
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        img {
+        video {
             width: 100%;
             border-radius: 15px;
-        }
-
-        p {
-            font-size: 1.2rem;
             margin-top: 15px;
-        }
-
-        .date {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ff4d6d;
-            margin-top: 10px;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #ff4d6d;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-        }
-
-        .button:hover {
-            background: #e63e5c;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>🎉 Invitation d'anniversaire 🎉</h1>
+    <div class="box">
+        <h1>🎉 Invitation Anniversaire 🎉</h1>
 
-        <div class="card">
+        <!-- VIDÉO -->
+        <video controls autoplay muted loop>
+            <source src="video.mp4" type="video/mp4">
+            Ton navigateur ne supporte pas la vidéo.
+        </video>
 
-            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d" alt="Anniversaire">
-
-            <p>
-                Tu es invité(e) à mon anniversaire !<br>
-                Viens faire la fête avec moi 🎂🥳
-            </p>
-
-            <div class="date">
-                📅 Samedi 20 juillet à 18h
-            </div>
-
-            <p>📍 Chez moi</p>
-
-            <a href="#" class="button">Je viens !</a>
-
-        </div>
+        <p>Tu es invité(e) à mon anniversaire 🥳</p>
     </div>
 
 </body>
