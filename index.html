@@ -2,32 +2,22 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation Anniversaire 🎉</title>
+    <title>Invitation Anniversaire</title>
 
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background: linear-gradient(135deg, #ff6a00, #ee0979);
             color: white;
             text-align: center;
+            margin: 0;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 800px;
+        .box {
+            max-width: 700px;
             margin: auto;
-            padding: 30px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .card {
             background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
             padding: 20px;
             border-radius: 20px;
         }
@@ -37,64 +27,22 @@
             border-radius: 15px;
             margin-top: 15px;
         }
-
-        .button {
-            margin-top: 15px;
-            display: inline-block;
-            padding: 12px 25px;
-            background: white;
-            color: #ee0979;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-
-        .info {
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
     </style>
 </head>
 
 <body>
 
-<div class="container">
-
-    <h1>🎉 Invitation Anniversaire 🎉</h1>
-
-    <div class="card">
+    <div class="box">
+        <h1>🎉 Invitation Anniversaire 🎉</h1>
 
         <!-- VIDÉO -->
-        <video id="video" autoplay muted loop>
+        <video controls autoplay muted loop>
             <source src="video.mp4" type="video/mp4">
             Ton navigateur ne supporte pas la vidéo.
         </video>
 
-        <div class="info">
-            Clique sur le bouton pour activer le son 🔊
-        </div>
-
-        <div class="button" onclick="enableSound()">
-            Activer le son
-        </div>
-
         <p>Tu es invité(e) à mon anniversaire 🥳</p>
-
     </div>
-
-</div>
-
-<script>
-function enableSound() {
-    const video = document.getElementById("video");
-
-    video.muted = false;   // active le son
-    video.volume = 1.0;    // volume max
-    video.play();          // relance proprement
-
-    alert("🔊 Son activé !");
-}
-</script>
 
 </body>
 </html>
