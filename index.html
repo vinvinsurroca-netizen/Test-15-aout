@@ -151,7 +151,7 @@ body{
 /* ---------- Logo ---------- */
 
 .logo{
-    width:416px;
+    width:292px;
     display:block;
     margin:10px auto 20px;
 }
@@ -499,6 +499,20 @@ const main=document.getElementById("mainContent");
 const music=document.getElementById("music");
 
 music.volume = 0.5;
+let wasPlaying = false;
+
+document.addEventListener("visibilitychange", async () => {
+    if (document.hidden) {
+        wasPlaying = !music.paused;
+        music.pause();
+    } else if (wasPlaying) {
+        try {
+            await music.play();
+        } catch (e) {
+            console.error("Impossible de reprendre la musique :", e);
+        }
+    }
+});
 
 start.onclick = async () => {
     try {
