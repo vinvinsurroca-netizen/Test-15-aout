@@ -498,7 +498,7 @@ const screen=document.getElementById("startScreen");
 const main=document.getElementById("mainContent");
 const music=document.getElementById("music");
 
-music.volume = 0.20;
+music.volume = 0.25;
 let wasPlaying = false;
 
 document.addEventListener("visibilitychange", async () => {
@@ -558,7 +558,7 @@ indicators.forEach((dot, index) => {
 updateCarousel();
 
 /* countdown — à adapter avec la date réelle de l'événement */
-const eventDate = new Date("2026-09-12T10:00:00");
+const eventDate = new Date("2026-08-15T10:00:00");
 
 function updateCountdown(){
     const now = new Date();
@@ -573,16 +573,18 @@ function updateCountdown(){
     const days = Math.floor(diff / (1000*60*60*24));
     const hours = Math.floor((diff / (1000*60*60)) % 24);
     const minutes = Math.floor((diff / (1000*60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
     el.innerHTML = `
         <div class="countdown-item"><span class="countdown-number">${days}</span><span class="countdown-label">jours</span></div>
         <div class="countdown-item"><span class="countdown-number">${hours}</span><span class="countdown-label">heures</span></div>
         <div class="countdown-item"><span class="countdown-number">${minutes}</span><span class="countdown-label">min</span></div>
+        <div class="countdown-item"><span class="countdown-number">${seconds}</span><span class="countdown-label">sec</span></div>
     `;
 }
 
 updateCountdown();
-setInterval(updateCountdown, 60000);
+setInterval(updateCountdown, 1000);
 
 </script>
 
