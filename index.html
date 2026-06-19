@@ -1,108 +1,292 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitation Anniversaire 🎉</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interville de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff6a00, #ee0979);
-        color: white;
-        text-align: center;
-    }
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
 
-    .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 25px;
-    }
+        .main-content {
+            display: none;
+        }
 
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-    }
+        /* Style pour le logo */
+        .logo {
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+        }
 
-    .card {
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(10px);
-        border-radius: 20px;
-        padding: 20px;
-    }
+        p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #e0e0e0;
+        }
 
-    video {
-        width: 100%;
-        border-radius: 15px;
-    }
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
 
-    button {
-        margin-top: 15px;
-        padding: 12px 22px;
-        border: none;
-        border-radius: 30px;
-        background: white;
-        color: #ee0979;
-        font-weight: bold;
-        font-size: 1rem;
-        cursor: pointer;
-    }
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
-    button:active {
-        transform: scale(0.97);
-    }
+        .start-button {
+            background-color: #4a4a8a;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 50px auto;
+            display: block;
+            transition: background-color 0.3s;
+        }
 
-    .text {
-        margin-top: 15px;
-        font-size: 1.1rem;
-    }
-</style>
+        .start-button:hover {
+            background-color: #3a3a6a;
+        }
+
+        .start-button-subtitle {
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-top: 5px;
+        }
+
+        /* Style pour la section de la cagnotte */
+        .cagnotte-section {
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .cagnotte-text {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+
+        .cagnotte-button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .cagnotte-button:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .arrows {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #ff6b6b;
+        }
+
+        /* Style du carrousel */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
+    </style>
 </head>
-
 <body>
-
-<div class="container">
-
-    <h1>🎉 Invitation Anniversaire 🎉</h1>
-
-    <div class="card">
-
-        <!-- VIDEO COMPATIBLE IPHONE -->
-        <video id="video" playsinline controls muted loop>
-            <source src="video.mp4" type="video/mp4">
-            Ton navigateur ne supporte pas la vidéo.
-        </video>
-
-        <div class="text">
-            Clique sur le bouton pour activer le son 🔊
-        </div>
-
-        <button onclick="enableSound()">
-            🔊 Activer le son
-        </button>
-
-        <p class="text">
-            Tu es invité(e) à mon anniversaire 🥳
-        </p>
-
+    <!-- Bouton initial (seul élément visible au début) -->
+    <div style="text-align: center;">
+        <button class="start-button" id="startButton">🎵 Démarrer l'expérience</button>
+        <p class="start-button-subtitle">(Active le son)</p>
     </div>
 
-</div>
+    <!-- Contenu principal (masqué au début) -->
+    <div class="main-content" id="mainContent">
+        <!-- Logo à la place du titre -->
+        <img src="./Logo.png" alt="Logo Interville 2026" class="logo">
 
-<script>
-function enableSound() {
-    const video = document.getElementById("video");
+            <p>Merci pour ton inscription, tié tigre ! 🐯
+             Mais attention, n’oublie pas : pour finaliser ton inscription, il faut participer à la cagnotte en bas de cette page. 💰
+            J’ai hâte de te voir chez moi ! Cette édition réserve plein de surprises 🎉.
+            Pour te remettre dans l’ambiance, voici quelques photos de l’année dernière 📸✨. !</p>
+        
+        <!-- Carrousel d'images -->
+        <div class="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <img src="./photo1.jpg" alt="Photo 1" class="carousel-item">
+                <img src="./photo2.jpg" alt="Photo 2" class="carousel-item">
+                <img src="./photo3.jpg" alt="Photo 3" class="carousel-item">
+            </div>
+            <button class="carousel-button" id="prevBtn">&#10094;</button>
+            <button class="carousel-button" id="nextBtn">&#10095;</button>
+            <div class="carousel-indicators">
+                <span class="indicator active" data-index="0"></span>
+                <span class="indicator" data-index="1"></span>
+                <span class="indicator" data-index="2"></span>
+            </div>
+        </div>
 
-    video.muted = false;
-    video.volume = 1.0;
 
-    // relance propre (important iPhone)
-    video.play().catch(() => {
-        alert("Appuie sur ▶️ dans la vidéo si besoin");
-    });
-}
-</script>
+        <div class="gif-container">
+            <img src="./gif13.gif" alt="GIF de confirmation">
+        </div>
 
+        <!-- Section pour la cagnotte -->
+        <div class="cagnotte-section">
+            <p class="cagnotte-text">Envie de soutenir le projet ?</p>
+            <div class="arrows">↓↓↓</div>
+            <a href="https://www.onparticipe.fr/c/QnABVMi2" class="cagnotte-button" target="_blank">
+                💰 Participer à la cagnotte 💰
+            </a>
+        </div>
+    </div>
+
+    <!-- Musique de fond -->
+    <audio id="background-music" preload="auto" loop playsinline>
+        <source src="./miaw.mp3" type="audio/mpeg">
+        Ton navigateur ne supporte pas l'audio.
+    </audio>
+
+    <script>
+        // Carrousel
+        const carouselInner = document.getElementById('carouselInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+
+        let currentIndex = 0;
+        const totalItems = 3;
+
+        function updateCarousel() {
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }, 5000);
+
+        // Expérience principale
+        const startButton = document.getElementById('startButton');
+        const mainContent = document.getElementById('mainContent');
+        const audio = document.getElementById('background-music');
+
+        startButton.addEventListener('click', function() {
+            audio.play()
+                .then(() => {
+                    startButton.style.display = 'none';
+                    document.querySelector('.start-button-subtitle').style.display = 'none';
+                    mainContent.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error("Erreur de lecture :", error);
+                    alert("Impossible de lancer la musique. Vérifiez le fichier ou essayez un autre navigateur.");
+                });
+        });
+    </script>
 </body>
 </html>
