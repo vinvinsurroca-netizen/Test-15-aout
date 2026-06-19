@@ -54,6 +54,7 @@ body{
     padding:14px 22px;
     font-size:16px;
     border-radius:12px;
+    cursor:pointer;
 }
 
 .small{
@@ -70,25 +71,6 @@ body{
     margin:10px auto 20px;
 }
 
-/* ---------- Typography ---------- */
-
-h1{
-    font-family:'Poppins',sans-serif;
-    font-size:1.4rem;
-    margin-bottom:10px;
-}
-
-p{
-    font-size:1rem;
-    line-height:1.6;
-    color:var(--text);
-}
-
-.muted{
-    color:var(--muted);
-    font-size:0.95rem;
-}
-
 /* ---------- Card ---------- */
 
 .card{
@@ -99,45 +81,96 @@ p{
     box-shadow:0 4px 12px rgba(0,0,0,0.06);
 }
 
+/* ---------- Typography ---------- */
+
+h1{
+    font-family:'Poppins',sans-serif;
+    font-size:1.3rem;
+    margin-bottom:10px;
+}
+
+p{
+    font-size:1rem;
+    line-height:1.6;
+}
+
+.muted{
+    color:var(--muted);
+}
+
 /* ---------- Carousel ---------- */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
 
-.carousel{
-    position:relative;
-    overflow:hidden;
-    border-radius:12px;
-    margin-top:12px;
-}
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
 
-.carousel-inner{
-    display:flex;
-    transition:transform .4s ease;
-}
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
 
-.carousel-item{
-    min-width:100%;
-    height:240px;
-    object-fit:cover;
-}
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+        }
 
-.btn{
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    border:none;
-    background:rgba(0,0,0,0.4);
-    color:white;
-    padding:8px 10px;
-    border-radius:50%;
-}
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-#prevBtn{left:10px}
-#nextBtn{right:10px}
+        #prevBtn {
+            left: 10px;
+        }
+
+        #nextBtn {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: white;
+        }
 
 /* ---------- CTA ---------- */
 
 .cta{
     text-align:center;
-    margin-top:10px;
+    margin-top:12px;
 }
 
 .cta a{
@@ -147,19 +180,12 @@ p{
     text-decoration:none;
     padding:12px 18px;
     border-radius:12px;
-    font-weight:500;
 }
 
-/* ---------- Visibility ---------- */
+/* ---------- Hidden ---------- */
 
 .hidden{display:none}
 
-/* ---------- Mobile tuning ---------- */
-
-@media (min-width:768px){
-    .carousel-item{height:380px}
-    .logo{width:200px}
-}
 </style>
 </head>
 
@@ -179,39 +205,42 @@ p{
     <img src="./Logo.png" class="logo">
 
     <div class="card">
+
         <h1>Bienvenue 👋</h1>
 
-        <p>
-            Merci pour ton inscription, tié tigre 🐯
-        </p>
+        <p>Merci pour ton inscription, tié tigre 🐯</p>
 
         <p class="muted">
-            Pour finaliser ton inscription, il faut participer à la cagnotte en bas de cette page 💰
+            Pour finaliser ton inscription, il faut participer à la cagnotte en bas 💰
         </p>
 
-        <p>
-            Cette édition réserve plein de surprises 🎉  
-            Voici quelques photos de l’année dernière 📸✨
-        </p>
+        <p>Voici quelques photos de l’édition précédente 📸✨</p>
 
         <div class="carousel">
+
             <div class="carousel-inner" id="carouselInner">
-                <img src="./photo1.jpg" class="carousel-item">
-                <img src="./photo2.jpg" class="carousel-item">
-                <img src="./photo3.jpg" class="carousel-item">
+                <img src="./Photo/photo1.jpg" class="carousel-item">
+                <img src="./Photo/photo2.jpg" class="carousel-item">
+                <img src="./Photo/photo3.jpg" class="carousel-item">
             </div>
 
-            <button class="btn" id="prevBtn">&#10094;</button>
-            <button class="btn" id="nextBtn">&#10095;</button>
+            <button class="carousel-button" id="prevBtn">&#10094;</button>
+            <button class="carousel-button" id="nextBtn">&#10095;</button>
+
+            <div class="carousel-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+
         </div>
+
     </div>
 
     <div class="card">
         <h1>Cagnotte 💰</h1>
 
-        <p class="muted">
-            Soutiens le projet et valide ton inscription.
-        </p>
+        <p class="muted">Soutiens le projet et valide ton inscription.</p>
 
         <div class="cta">
             <a href="https://www.onparticipe.fr/c/QnABVMi2" target="_blank">
@@ -229,6 +258,7 @@ p{
 </audio>
 
 <script>
+
 const start=document.getElementById("startButton");
 const screen=document.getElementById("startScreen");
 const main=document.getElementById("mainContent");
@@ -240,6 +270,7 @@ start.onclick=async()=>{
     main.classList.remove("hidden");
 };
 
+/* carousel */
 let i=0;
 const inner=document.getElementById("carouselInner");
 
@@ -252,6 +283,7 @@ document.getElementById("prevBtn").onclick=()=>{
     i=(i+2)%3;
     inner.style.transform=`translateX(-${i*100}%)`;
 };
+
 </script>
 
 </body>
