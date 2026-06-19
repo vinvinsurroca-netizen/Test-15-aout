@@ -264,9 +264,14 @@ const screen=document.getElementById("startScreen");
 const main=document.getElementById("mainContent");
 const music=document.getElementById("music");
 
-start.onclick=async()=>{
-    await music.play();
-    screen.style.display="none";
+start.onclick = async () => {
+    try {
+        await music.play();
+    } catch (e) {
+        console.error("Audio bloqué :", e);
+    }
+
+    screen.style.display = "none";
     main.classList.remove("hidden");
 };
 
