@@ -6,25 +6,69 @@
 
 <title>Interville 2026</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
     --bg:#f6f7fb;
+    --bg2:#eef0fa;
     --card:#ffffff;
     --text:#1c2430;
     --muted:#5a6678;
     --accent:#5b6cff;
+    --accent2:#8b5cff;
     --danger:#ff5a5f;
+    --danger2:#ff8a5b;
 }
 
 *{box-sizing:border-box}
 
+@media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+
 body{
     margin:0;
     font-family:'Rubik',sans-serif;
-    background:var(--bg);
+    background:linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
     color:var(--text);
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* ---------- Decorative blobs ---------- */
+
+.blob{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:0.35;
+    z-index:0;
+    pointer-events:none;
+}
+
+.blob-1{
+    width:340px;
+    height:340px;
+    background:var(--accent);
+    top:-100px;
+    left:-100px;
+}
+
+.blob-2{
+    width:300px;
+    height:300px;
+    background:var(--danger2);
+    bottom:-80px;
+    right:-100px;
+}
+
+.blob-3{
+    width:220px;
+    height:220px;
+    background:var(--accent2);
+    top:40%;
+    right:-60px;
 }
 
 /* ---------- Layout ---------- */
@@ -33,6 +77,8 @@ body{
     max-width:900px;
     margin:auto;
     padding:16px;
+    position:relative;
+    z-index:1;
 }
 
 /* ---------- Intro ---------- */
@@ -45,48 +91,141 @@ body{
     justify-content:center;
     text-align:center;
     padding:20px;
+    position:relative;
+    z-index:1;
+}
+
+.start-emoji{
+    font-size:3rem;
+    margin-bottom:6px;
+    animation:float 3s ease-in-out infinite;
+}
+
+.start-title{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.5rem;
+    margin:0 0 22px;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
 .start-button{
-    background:var(--accent);
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
     color:white;
     border:none;
-    padding:14px 22px;
+    padding:16px 26px;
     font-size:16px;
-    border-radius:12px;
+    font-weight:600;
+    font-family:'Rubik',sans-serif;
+    border-radius:14px;
     cursor:pointer;
+    box-shadow:0 8px 24px rgba(91,108,255,0.35);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    animation:pulse 2.4s ease-in-out infinite;
+}
+
+.start-button:hover{
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 12px 28px rgba(91,108,255,0.45);
 }
 
 .small{
-    margin-top:10px;
+    margin-top:14px;
     color:var(--muted);
     font-size:14px;
 }
 
-/* ---------- logo ---------- */
+@keyframes pulse{
+    0%, 100% { box-shadow:0 8px 24px rgba(91,108,255,0.35); }
+    50% { box-shadow:0 8px 32px rgba(91,108,255,0.55); }
+}
+
+@keyframes float{
+    0%, 100% { transform:translateY(0); }
+    50% { transform:translateY(-8px); }
+}
+
+/* ---------- Logo ---------- */
 
 .logo{
-    width:160px;
+    width:416px;
     display:block;
     margin:10px auto 20px;
+}
+
+/* ---------- Countdown ---------- */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:14px 0 4px;
+    flex-wrap:wrap;
+}
+
+.countdown-item{
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    color:white;
+    border-radius:12px;
+    padding:10px 14px;
+    min-width:62px;
+    text-align:center;
+    box-shadow:0 6px 16px rgba(91,108,255,0.3);
+}
+
+.countdown-number{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+    display:block;
+    line-height:1;
+}
+
+.countdown-label{
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    opacity:0.9;
 }
 
 /* ---------- Card ---------- */
 
 .card{
     background:var(--card);
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:16px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 10px 30px rgba(28,36,48,0.08);
+    opacity:0;
+    transform:translateY(18px);
+    animation:reveal 0.7s ease forwards;
+}
+
+.card:nth-of-type(1){ animation-delay:0.05s; }
+.card:nth-of-type(2){ animation-delay:0.2s; }
+.card:nth-of-type(3){ animation-delay:0.35s; }
+
+@keyframes reveal{
+    to{ opacity:1; transform:translateY(0); }
 }
 
 /* ---------- Typography ---------- */
 
 h1{
     font-family:'Poppins',sans-serif;
-    font-size:1.3rem;
+    font-weight:700;
+    font-size:1.5rem;
     margin-bottom:10px;
+}
+
+h2{
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:1.4rem;
+    margin-bottom:6px;
 }
 
 p{
@@ -99,87 +238,131 @@ p{
 }
 
 /* ---------- Carousel ---------- */
-        .carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 30px auto;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 26px auto;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 14px 34px rgba(28,36,48,0.18);
+    opacity:0;
+    transform:translateY(18px);
+    animation:reveal 0.7s ease forwards;
+    animation-delay:0.12s;
+}
 
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
 
-        .carousel-item {
-            min-width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
+.carousel-item {
+    min-width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
 
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            border-radius: 50%;
-            z-index: 10;
-        }
+.carousel-item-video {
+    background: #000;
+    object-fit: contain;
+}
 
-        .carousel-button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(20, 24, 35, 0.45);
+    backdrop-filter: blur(4px);
+    color: white;
+    border: none;
+    width:42px;
+    height:42px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
-        #prevBtn {
-            left: 10px;
-        }
+.carousel-button:hover {
+    background-color: rgba(91, 108, 255, 0.85);
+    transform: translateY(-50%) scale(1.08);
+}
 
-        #nextBtn {
-            right: 10px;
-        }
+#prevBtn {
+    left: 12px;
+}
 
-        .carousel-indicators {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-        }
+#nextBtn {
+    right: 12px;
+}
 
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-        }
+.carousel-indicators {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+}
 
-        .indicator.active {
-            background-color: white;
-        }
+.indicator {
+    width: 22px;
+    height: 5px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.indicator:hover{
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.indicator.active {
+    background-color: white;
+    transform:scaleX(1.15);
+}
 
 /* ---------- CTA ---------- */
 
 .cta{
     text-align:center;
-    margin-top:12px;
+    margin-top:16px;
 }
 
 .cta a{
     display:inline-block;
-    background:var(--danger);
+    background:linear-gradient(135deg, var(--danger), var(--danger2));
     color:white;
     text-decoration:none;
-    padding:12px 18px;
-    border-radius:12px;
+    font-weight:600;
+    padding:14px 24px;
+    border-radius:14px;
+    box-shadow:0 8px 22px rgba(255,90,95,0.35);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    animation:pulse-cta 2.4s ease-in-out infinite;
+}
+
+.cta a:hover{
+    transform:translateY(-2px) scale(1.03);
+    box-shadow:0 12px 26px rgba(255,90,95,0.45);
+}
+
+@keyframes pulse-cta{
+    0%, 100% { box-shadow:0 8px 22px rgba(255,90,95,0.35); }
+    50% { box-shadow:0 8px 30px rgba(255,90,95,0.55); }
+}
+
+.price-tag{
+    display:inline-block;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:1.5rem;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
 }
 
 /* ---------- Hidden ---------- */
@@ -191,8 +374,14 @@ p{
 
 <body>
 
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
 <!-- START -->
 <div class="start-screen" id="startScreen">
+    <div class="start-emoji">🎉</div>
+    <h1 class="start-title">Interville 2026</h1>
     <button class="start-button" id="startButton">🎵 Démarrer l'expérience</button>
     <div class="small">(Active le son)</div>
 </div>
@@ -202,19 +391,33 @@ p{
 
 <div class="container">
 
-    <img src="./Logo.png" class="logo">
+    <img src="./logo.png" class="logo">
 
-    <div class="card">
+    <div class="card" style="text-align: center;">
 
-        <h1>Bienvenue 👋</h1>
+          <h2>Bienvenue 👋</h2>
 
-        <p>Merci pour ton inscription, tié tigre 🐯</p>
+          <p>
+            🐯 <strong>Merci pour ton inscription, t'es un tigre</strong> 🐯
+          </p>
 
-        <p class="muted">
-            Pour finaliser ton inscription, il faut participer à la cagnotte en bas 💰
-        </p>
+          <p>
+            👉 <strong>Pour finaliser ton inscription, il est nécessaire de participer à la <u>cagnotte</u> ci-dessous 💰</strong> 👈<br>
+            <small>(Tu peux régler directement par carte bancaire ou Apple Pay depuis le site de la cagnotte.)</small>
+          </p>
 
-        <p>Voici quelques photos de l’édition précédente 📸✨</p>
+          <p>
+            L'édition 2026 s'approche à grands pas et réserve plein de surprises 🎉 : nouvelles activités, musique et paella géante 🥘.  
+            J'ai hâte de te voir parmi nous.
+          </p>
+
+          <div class="countdown" id="countdown"></div>
+
+          <p>
+            Pour te faire patienter et te remémorer quelques souvenirs, voici quelques photos de l'édition précédente 📸✨
+          </p>
+
+        </div>
 
         <div class="carousel">
 
@@ -222,6 +425,16 @@ p{
                 <img src="./Photo/photo1.jpg" class="carousel-item">
                 <img src="./Photo/photo2.jpg" class="carousel-item">
                 <img src="./Photo/photo3.jpg" class="carousel-item">
+                <img src="./Photo/photo4.jpg" class="carousel-item">
+                <img src="./Photo/photo5.jpg" class="carousel-item">
+                <img src="./Photo/photo6.jpg" class="carousel-item">
+                <img src="./Photo/photo7.jpg" class="carousel-item">
+                <video class="carousel-item carousel-item-video" controls muted>
+                    <source src="./Photo/video1.mp4" type="video/mp4">
+                </video>
+                <video class="carousel-item carousel-item-video" controls muted>
+                    <source src="./Photo/video2.mp4" type="video/mp4">
+                </video>
             </div>
 
             <button class="carousel-button" id="prevBtn">&#10094;</button>
@@ -231,6 +444,12 @@ p{
                 <span class="indicator active"></span>
                 <span class="indicator"></span>
                 <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
             </div>
 
         </div>
@@ -238,14 +457,29 @@ p{
     </div>
 
     <div class="card">
-        <h1>Cagnotte 💰</h1>
+        <div style="text-align: center; font-family: Arial, sans-serif;">
 
-        <p class="muted">Soutiens le projet et valide ton inscription.</p>
+          <h1>💰 Cagnotte 💰</h1>
 
-        <div class="cta">
-            <a href="https://www.onparticipe.fr/c/QnABVMi2" target="_blank">
-                Participer à la cagnotte
-            </a>
+          <p>
+            👉 <strong>Par ici la thune !!!!</strong> 👈
+          </p>
+
+          <p>
+            Faut payer les artistes 🎤🎶 et la bière 🍺<br>
+            (oups j’en ai peut-être déjà trop dit 🤭)
+          </p>
+
+          <p>
+            Comme l’an dernier : <span class="price-tag">40€</span> par personne pour une journée <strong>ALL INCLUSIVE</strong> 🍽️🍻🎉
+          </p>
+
+          <div class="cta">
+              <a href="https://www.onparticipe.fr/c/QnABVMi2" target="_blank">
+                  Participer à la cagnotte
+              </a>
+          </div>
+
         </div>
     </div>
 
@@ -264,6 +498,8 @@ const screen=document.getElementById("startScreen");
 const main=document.getElementById("mainContent");
 const music=document.getElementById("music");
 
+music.volume = 0.5;
+
 start.onclick = async () => {
     try {
         await music.play();
@@ -278,16 +514,61 @@ start.onclick = async () => {
 /* carousel */
 let i=0;
 const inner=document.getElementById("carouselInner");
+const indicators = document.querySelectorAll(".indicator");
+const slideCount = indicators.length;
 
-document.getElementById("nextBtn").onclick=()=>{
-    i=(i+1)%3;
-    inner.style.transform=`translateX(-${i*100}%)`;
+const updateCarousel = () => {
+    inner.style.transform = `translateX(-${i * 100}%)`;
+    indicators.forEach((dot, index) => {
+        dot.classList.toggle("active", index === i);
+    });
 };
 
-document.getElementById("prevBtn").onclick=()=>{
-    i=(i+2)%3;
-    inner.style.transform=`translateX(-${i*100}%)`;
+document.getElementById("nextBtn").onclick = () => {
+    i = (i + 1) % slideCount;
+    updateCarousel();
 };
+
+document.getElementById("prevBtn").onclick = () => {
+    i = (i + slideCount - 1) % slideCount;
+    updateCarousel();
+};
+
+indicators.forEach((dot, index) => {
+    dot.onclick = () => {
+        i = index;
+        updateCarousel();
+    };
+});
+
+updateCarousel();
+
+/* countdown — à adapter avec la date réelle de l'événement */
+const eventDate = new Date("2026-09-12T10:00:00");
+
+function updateCountdown(){
+    const now = new Date();
+    let diff = eventDate - now;
+
+    const el = document.getElementById("countdown");
+    if (diff <= 0){
+        el.innerHTML = `<div class="countdown-item"><span class="countdown-number">🎉</span><span class="countdown-label">C'est le jour J !</span></div>`;
+        return;
+    }
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+
+    el.innerHTML = `
+        <div class="countdown-item"><span class="countdown-number">${days}</span><span class="countdown-label">jours</span></div>
+        <div class="countdown-item"><span class="countdown-number">${hours}</span><span class="countdown-label">heures</span></div>
+        <div class="countdown-item"><span class="countdown-number">${minutes}</span><span class="countdown-label">min</span></div>
+    `;
+}
+
+updateCountdown();
+setInterval(updateCountdown, 60000);
 
 </script>
 
